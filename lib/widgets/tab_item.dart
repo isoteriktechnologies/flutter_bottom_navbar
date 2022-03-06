@@ -26,6 +26,7 @@ class TabItem extends StatelessWidget {
   final UniqueKey uniqueKey;
   final bool selected;
   final IconData icon;
+  final IconData? activeIcon;
   final String? title;
   final Function(UniqueKey uniqueKey) callbackFunction;
   final Color? textColor;
@@ -46,6 +47,7 @@ class TabItem extends StatelessWidget {
     required this.callbackFunction,
     required this.textColor,
     required this.iconColor,
+    this.activeIcon,
     this.iconOn = -1,
     this.iconOff = -1,
     this.textOff = 0,

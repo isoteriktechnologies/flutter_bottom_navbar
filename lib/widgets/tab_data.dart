@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 /// [key]: key
 class TabData {
   final IconData icon;
+  final IconData? activeIcon;
   final String? title;
   final VoidCallback? onClick;
   final double? iconSize;
@@ -19,6 +20,7 @@ class TabData {
 
   TabData({
     required this.icon,
+    this.activeIcon,
     this.title,
     this.onClick,
     this.iconSize,

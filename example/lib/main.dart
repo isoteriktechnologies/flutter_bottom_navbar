@@ -87,6 +87,7 @@ List<TabData> getTabsData() {
   return [
     TabData(
       icon: Icons.home,
+      activeIcon: Icons.build,
       iconSize: 25.0,
       title: 'Home',
       fontSize: 12,

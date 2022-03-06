@@ -110,8 +110,10 @@ class _CircleBottomNavigationBarState extends State<CircleBottomNavigationBar>
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    activeIcon =
-        currentSelected >= 0 ? widget.tabs[currentSelected].icon : null;
+    activeIcon = currentSelected >= 0
+        ? widget.tabs[currentSelected].activeIcon ??
+            widget.tabs[currentSelected].icon
+        : null;
     activeIconSize = currentSelected >= 0
         ? widget.tabs[currentSelected].iconSize ?? 30
         : null;
@@ -173,7 +175,8 @@ class _CircleBottomNavigationBarState extends State<CircleBottomNavigationBar>
       setState(() {
         currentSelected = selected;
         _circleAlignX = -1 + (2 / (widget.tabs.length - 1) * selected);
-        nextIcon = widget.tabs[selected].icon;
+        nextIcon = widget.tabs[currentSelected].activeIcon ??
+            widget.tabs[currentSelected].icon;
         nextIconSize = widget.tabs[selected].iconSize ?? 30;
       });
     }
@@ -244,6 +247,7 @@ class _CircleBottomNavigationBarState extends State<CircleBottomNavigationBar>
                           ? tab.key == widget.tabs[currentSelected].key
                           : false,
                       icon: tab.icon,
+                      activeIcon: tab.activeIcon,
                       title: tab.title,
                       iconColor: inactiveIconColor,
                       textColor: textColor,
