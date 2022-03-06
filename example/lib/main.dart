@@ -52,6 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
       arcHeightWithNotch = (size.height * 0.075) + viewPadding.bottom;
     }
 
+    arcHeightWithNotch = 200;
+
     return Scaffold(
       appBar: AppBar(
         title: const Center(
