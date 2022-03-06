@@ -43,6 +43,8 @@ class CircleBottomNavigationBar extends StatefulWidget {
   final Color? inactiveIconColor;
   final Color? textColor;
   final Color? barBackgroundColor;
+  final Gradient? barGradient;
+  final Gradient? circleGradient;
   final double circleSize;
   final double barHeight;
   final double arcHeight;
@@ -57,17 +59,20 @@ class CircleBottomNavigationBar extends StatefulWidget {
   final double itemIconOff;
   final double itemTextOn;
   final double itemTextOff;
+  final bool showActiveText;
 
   CircleBottomNavigationBar({
-    this.key,
     required this.tabs,
     required this.onTabChangedListener,
+    this.key,
     this.initialSelection,
     this.circleColor,
     this.inactiveIconColor,
     this.activeIconColor,
     this.textColor,
     this.barBackgroundColor,
+    this.barGradient,
+    this.circleGradient,
     this.iconYAxisSpace = -0.5,
     this.textYAxisSpace = 1,
     this.itemIconOn = -1,
@@ -82,6 +87,7 @@ class CircleBottomNavigationBar extends StatefulWidget {
     this.shadowAllowance = 20.0,
     this.hasElevationShadows = true,
     this.blurShadowRadius = 8.0,
+    this.showActiveText = false,
   });
 
   @override
@@ -223,6 +229,7 @@ class _CircleBottomNavigationBarState extends State<CircleBottomNavigationBar>
             height: widget.barHeight,
             decoration: BoxDecoration(
               color: barBackgroundColor,
+              gradient: widget.barGradient,
               boxShadow: <BoxShadow>[
                 widget.hasElevationShadows
                     ? BoxShadow(
@@ -247,7 +254,6 @@ class _CircleBottomNavigationBarState extends State<CircleBottomNavigationBar>
                           ? tab.key == widget.tabs[currentSelected].key
                           : false,
                       icon: tab.icon,
-                      activeIcon: tab.activeIcon,
                       title: tab.title,
                       iconColor: inactiveIconColor,
                       textColor: textColor,
@@ -258,6 +264,7 @@ class _CircleBottomNavigationBarState extends State<CircleBottomNavigationBar>
                       iconSize: tab.iconSize,
                       fontSize: tab.fontSize,
                       fontWeight: tab.fontWeight,
+                      showActiveText: widget.showActiveText,
                       callbackFunction: (UniqueKey key) =>
                           _callbackFunction(key),
                     ),
@@ -284,8 +291,8 @@ class _CircleBottomNavigationBarState extends State<CircleBottomNavigationBar>
                                   : 1),
                           1),
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: 15,
+                        padding: EdgeInsets.only(
+                          bottom: widget.showActiveText ? 15 : 5,
                         ),
                         child: FractionallySizedBox(
                           widthFactor: 1 / widget.tabs.length,
@@ -341,6 +348,7 @@ class _CircleBottomNavigationBarState extends State<CircleBottomNavigationBar>
                                   activeIconColor: activeIconColor,
                                   activeIconSize: activeIconSize,
                                   circleSize: widget.circleSize,
+                                  circleGradient: widget.circleGradient,
                                 ),
                               ],
                             ),

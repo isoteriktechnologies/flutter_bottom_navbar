@@ -17,6 +17,7 @@ class CircleIconColor extends StatelessWidget {
     required this.activeIcon,
     required this.activeIconColor,
     required this.activeIconSize,
+    this.circleGradient,
   });
 
   final double circleSize;
@@ -25,6 +26,7 @@ class CircleIconColor extends StatelessWidget {
   final IconData? activeIcon;
   final Color? activeIconColor;
   final double? activeIconSize;
+  final Gradient? circleGradient;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class CircleIconColor extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: circleColor,
+          gradient: circleGradient,
         ),
         child: Padding(
           padding: const EdgeInsets.all(

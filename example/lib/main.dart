@@ -76,6 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
         circleColor: Colors.purple,
         activeIconColor: Colors.white,
         inactiveIconColor: Colors.grey,
+        showActiveText: true,
+        circleGradient: const LinearGradient(
+          colors: [Colors.red, Colors.green]
+        ),
         tabs: getTabsData(),
         onTabChangedListener: (index) => setState(() => currentPage = index),
       ),

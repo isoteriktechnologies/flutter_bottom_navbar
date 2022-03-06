@@ -26,7 +26,6 @@ class TabItem extends StatelessWidget {
   final UniqueKey uniqueKey;
   final bool selected;
   final IconData icon;
-  final IconData? activeIcon;
   final String? title;
   final Function(UniqueKey uniqueKey) callbackFunction;
   final Color? textColor;
@@ -39,6 +38,7 @@ class TabItem extends StatelessWidget {
   final double iconOff;
   final double textOff;
   final double textOn;
+  final bool showActiveText;
 
   TabItem({
     required this.uniqueKey,
@@ -47,7 +47,6 @@ class TabItem extends StatelessWidget {
     required this.callbackFunction,
     required this.textColor,
     required this.iconColor,
-    this.activeIcon,
     this.iconOn = -1,
     this.iconOff = -1,
     this.textOff = 0,
@@ -56,6 +55,7 @@ class TabItem extends StatelessWidget {
     this.iconSize,
     this.fontSize,
     this.fontWeight = FontWeight.w600,
+    this.showActiveText = false,
   });
 
   @override
@@ -67,7 +67,7 @@ class TabItem extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          title == null
+          title == null || (selected && !showActiveText)
               ? Container()
               : Container(
                   height: double.infinity,
