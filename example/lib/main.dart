@@ -76,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         circleColor: Colors.purple,
         activeIconColor: Colors.white,
         inactiveIconColor: Colors.grey,
+        barBackgroundColor: Colors.black,
         showActiveText: true,
         circleGradient: const LinearGradient(
           colors: [Colors.red, Colors.green]

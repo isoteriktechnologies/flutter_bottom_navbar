@@ -317,11 +317,11 @@ class _CircleBottomNavigationBarState extends State<CircleBottomNavigationBar>
                                               widget.circleOutline,
                                           height: widget.circleSize +
                                               widget.circleOutline,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
+                                          decoration:  BoxDecoration(
+                                            color: widget.barBackgroundColor ?? Colors.white,
                                             shape: BoxShape.circle,
                                             boxShadow: <BoxShadow>[
-                                              BoxShadow(
+                                              const BoxShadow(
                                                 color: Colors.black12,
                                                 blurRadius: 8,
                                               ),
